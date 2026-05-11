@@ -38,7 +38,7 @@ Before using this tool, ensure you have the following installed:
     ```
 3.  **Apply the Required Fix**:
     > [!IMPORTANT]
-    > If you reinstall `node_modules` or build the project on a new machine, you **must** manually apply the syntax fix to `node_modules/forge-convert-utils/dist/writers/writer.js` to ensure compatibility with modern Node.js versions. Keep a backup of your fixed `writer.js` file!
+    > If you reinstall `node_modules` or build the project on a new machine, you **must** manually replace `node_modules/forge-convert-utils`  becose of syntax fix to `node_modules/forge-convert-utils/dist/writers/writer.js` to ensure compatibility with modern Node.js versions.
 
 4.  **Run the application**:
     ```bash
