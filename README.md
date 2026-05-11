@@ -25,10 +25,14 @@ Ensure you have the following installed:
 
 ## 📦 Quick Setup
 
+
 1.  **Clone the repository:**
     ```bash
     git clone [https://github.com/LORG1996/APS-to-glTF-](https://github.com/LORG1996/APS-to-glTF-)
     ```
+    **Run the GUI:**
+    ```bash
+   `run ForgeConverterGUI.exe` or `run ForgeConverterGUI.py` to use program or :
 
 2.  **Install the conversion engine:**
     ```bash
