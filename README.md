@@ -1,65 +1,66 @@
 # APS (Forge) to glTF Converter GUI
 
-A lightweight Python-based Graphical User Interface (GUI) for converting **Autodesk Platform Services** (formerly Forge) models to glTF format. This tool acts as a wrapper for the `forge-convert-utils` Node.js library, providing a seamless experience for users who prefer not to use the command line.
+<img width="700" height="350" alt="Gemini_Generated_Image_3tf8me3tf8me3tf8" src="https://github.com/user-attachments/assets/507b0115-1a87-4d8b-811d-afb44ba0ce03" />
 
-## 🚀 Features
+A professional hybrid utility designed for architectural visualizers and 3D developers. This tool automates the extraction and conversion of **Autodesk Platform Services** (formerly Forge) models into high-quality **glTF** files, combining a user-friendly **Python GUI** with the powerful **Node.js** conversion engine.
 
-* **User-Friendly Interface**: Built with Python's Tkinter for simplicity and ease of use.
-* **Real-time Logging**: Monitor the conversion progress (downloading, mesh processing, etc.) directly within the application window.
-* **Enhanced Clipboard Support**: Full support for `Ctrl+V` (Paste), `Ctrl+C` (Copy), and `Ctrl+A` (Select All) that works across different keyboard layouts (English, Ukrainian, Russian).
-* **Built-in Guide**: Integrated step-by-step instructions on how to extract **URNs** and **Access Tokens** using browser developer tools.
-* **Multi-threaded**: The UI remains responsive and doesn't "freeze" while the conversion process runs in the background.
+## 🚀 Key Features
 
----
+* **Auto-Manifest Retrieval:** Automatically fetches `manifest.json` from Autodesk servers—no more manual file hunting.
+* **Intelligent URN Sanitizer:** Detects and fixes duplicated or malformed URNs during paste operations to prevent 401/404 errors.
+* **Dynamic Export Organization:** Automatically creates structured sub-folders for each unique model URN.
+* **Integrated Process Logs:** Real-time feedback via an embedded console to monitor conversion status and API responses.
+* **Cross-Tool Workflow:** Optimized for assets destined for Blender, Unreal Engine 5, or 3ds Max.
 
-## 🛠️ Prerequisites
+## 🛠 Prerequisites
 
-Before using this tool, ensure you have the following installed:
+Ensure you have the following installed:
 
-1.  **Node.js**: [Download and install Node.js](https://nodejs.org/).
-2.  **Conversion Library**: Install the required Node.js package in your project folder:
+1.  **Node.js (LTS):** [Download](https://nodejs.org/)
+2.  **Python 3.10+:** [Download](https://www.python.org/)
+3.  **Python Requests Library:**
     ```bash
-    npm install forge-convert-utils
+    pip install requests
     ```
-3.  **Python**: (Only if running from source) Python 3.10 or higher.
 
----
+## 📦 Quick Setup
 
-## 📦 Installation & Setup
-
-1.  **Clone the repository**:
+1.  **Clone the repository:**
     ```bash
     git clone [https://github.com/LORG1996/APS-to-glTF-](https://github.com/LORG1996/APS-to-glTF-)
-    cd APS-to-glTF-
     ```
-2.  **Install Node.js dependencies**:
+
+2.  **Install the conversion engine:**
     ```bash
-    npm install
+    npm init -y
+    npm install forge-convert-utils axios
     ```
-3.  **Apply the Required Fix**:
-    > [!IMPORTANT]
-    > If you reinstall `node_modules` or build the project on a new machine, you **must** manually replace `node_modules/forge-convert-utils` from `forge-convert-utils.zip`  becose of syntax fix to `node_modules/forge-convert-utils/dist/writers/writer.js` to ensure compatibility with modern Node.js versions.
 
-4.  **Run the application**:
+3.  **Verify core components:**
+    The following files **must** copy from "FIX" folder to fix them for new Node.JS:
+    * `node_modules/forge-convert-utils/bin/forge-convert.js`
+    * `node_modules/forge-convert-utils/lib/svf/reader.js`
+    * `node_modules/forge-convert-utils/lib/gltf/writer.js`
+
+## 🖥 Usage
+
+1.  **Run the GUI:**
     ```bash
-    python ForgeConverterGUI.py
+    python ForgeConverterGUI.py  or ForgeConverterGUI.bat
     ```
 
----
+2.  **Fill the credentials:**
+    * **Access Token:** Paste your valid `Bearer` token from the Autodesk session.
+    * **Model URN:** Paste the base64 URN (Auto-sanitizer will handle duplicates).
 
-## 🖥️ How to Use
+3.  **Start:**
+    * Select an output directory.
+    * Click **START CONVERSION** and wait for the "SUCCESS" message.
 
-1.  **Access Token**: Open your model in the Autodesk Viewer, find the `Authorization` header in the **Network tab (F12)**, and paste the Bearer token (copy only the string after the word "Bearer").
-2.  **Model URN**: Extract the Base64 URN of the model (detailed instructions are available via the **"How to get URN and Token?"** button in the app).
-3.  **Output Directory**: Choose the destination folder where you want to save the converted glTF files.
-4.  **Convert**: Click **🚀 START CONVERSION**. You can monitor the live output in the **Process Log** area.
+## 📂 Project Structure
 
----
-
-## 🏗️ Building the Executable (Optional)
-
-To compile the script into a standalone Windows `.exe` file, use PyInstaller:
-
-```powershell
-pip install pyinstaller
-pyinstaller --noconsole --onefile ForgeConverterGUI.py
+```text
+├── ForgeConverterGUI.py          # GUI Application logic
+├── node_modules/             # Node.js engine & dependencies
+├── package.json              # Node.js project configuration
+└── README.md                 # Documentation
