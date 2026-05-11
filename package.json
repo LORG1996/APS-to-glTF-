@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "async": "^3.2.6",
-    "forge-convert-utils": "^4.0.5",
-    "fs-extra": "^11.3.5",
-    "request": "^2.88.2"
-  }
-}
